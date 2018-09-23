@@ -115,28 +115,42 @@
 #     numbers.append(int(span.string))
 # print(sum(numbers))    
 
-import urllib.request, urllib.parse, urllib.error
-from bs4 import BeautifulSoup
-import ssl
 
-ctx = ssl.create_default_context()
-ctx.check_hostname = False
-ctx.verify_mode = ssl.CERT_NONE
+# Assignment 2nd of week 4 which needs the following URL and position = 18 and count = 4:
+# http://py4e-data.dr-chuck.net/known_by_George.html
+# import urllib.request, urllib.parse, urllib.error
+# from bs4 import BeautifulSoup
+# import ssl
+# # Ignore SSL
+# ctx = ssl.create_default_context()
+# ctx.check_hostname = False
+# ctx.verify_mode = ssl.CERT_NONE
+# url = input('Enter: ')
+# link_line = int(input("Enter position: ")) - 1 
+# # relative to first link
+# count = int(input("Enter count: "))
+# html = urllib.request.urlopen(url, context=ctx).read()
+# soup = BeautifulSoup(html, 'html.parser')
+# while count >= 0:
+#    html = urllib.request.urlopen(url, context=ctx).read()
+#    soup = BeautifulSoup(html, 'html.parser')
+#    tags = soup('a')
+#    print(url)
+#    url = tags[link_line].get("href", None)
+#    count = count - 1
 
-url = input('Enter: ')
-link_line = int(input("Enter position: ")) - 1 
-# relative to first link
-count = int(input("Enter count: "))
-
-html = urllib.request.urlopen(url, context=ctx).read()
-soup = BeautifulSoup(html, 'html.parser')
-
-while count >= 0:
-   html = urllib.request.urlopen(url, context=ctx).read()
-   soup = BeautifulSoup(html, 'html.parser')
-   tags = soup('a')
-   print(url)
-   url = tags[link_line].get("href", None)
-   count = count - 1
+# Sample output of the above code:
+# C:\Users\anand\Personal_Git_Repos\python-course-3-web-data\python-course-3-web-data>python week-4-ascii.py
+# Enter: http://py4e-data.dr-chuck.net/known_by_George.html
+# Enter position: 18
+# Enter count: 7
+# http://py4e-data.dr-chuck.net/known_by_George.html
+# http://py4e-data.dr-chuck.net/known_by_Ketsia.html
+# http://py4e-data.dr-chuck.net/known_by_Oban.html
+# http://py4e-data.dr-chuck.net/known_by_Badsha.html
+# http://py4e-data.dr-chuck.net/known_by_Shanelle.html
+# http://py4e-data.dr-chuck.net/known_by_Caris.html
+# http://py4e-data.dr-chuck.net/known_by_Kaitlyn.html
+# http://py4e-data.dr-chuck.net/known_by_Sadie.html
 
 
