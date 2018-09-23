@@ -101,3 +101,16 @@
 # tags = soup('a')
 # for tag in tags:
 #     print(tag.get('href', None))
+
+# Assignment 1st of week 4 (WIP)
+# http://py4e-data.dr-chuck.net/comments_42.html
+import urllib.request
+import re
+fhand = urllib.request.urlopen('http://py4e-data.dr-chuck.net/comments_42.html')
+for line in fhand:
+    x = (line.decode().strip())
+    # print(x)
+    for line in x:
+        y = re.findall('[0-9]+',line)
+        if y != 
+        print(y)
