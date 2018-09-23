@@ -102,7 +102,8 @@
 # for tag in tags:
 #     print(tag.get('href', None))
 
-# Assignment 1st of week 4 (WIP)
+# Assignment 1st of week 4 which needs the following URL:
+# http://py4e-data.dr-chuck.net/comments_133479.html
 # import urllib.request, urllib.parse, urllib.error
 # from bs4 import BeautifulSoup
 # url = input('Enter - ')
