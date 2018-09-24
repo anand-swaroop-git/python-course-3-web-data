@@ -4,38 +4,38 @@
 
 # Xtensible Markup Language
 # XML Elements or Nodes
-<people>​
-    <person>​
-    #Simple Elements since the tags just contain some plain text/number
-       <name>Chuck</name>​
-       <phone>303 4456</phone>​
-    </person>​
-    #Complex Elements since the tags contain child tags
-    <person>​
-       <name>Noah</name>​
-       <phone>622 7421</phone>​
-    </person>​
-</people>​
+# <people>​
+#     <person>​
+#     #Simple Elements since the tags just contain some plain text/number
+#        <name>Chuck</name>​
+#        <phone>303 4456</phone>​
+#     </person>​
+#     #Complex Elements since the tags contain child tags
+#     <person>​
+#        <name>Noah</name>​
+#        <phone>622 7421</phone>​
+#     </person>​
+# </people>​
 
 # Primary purpose is to help information systems share structured data​
 # It started as a simplified subset of the Standard Generalized Markup Language (SGML), and is designed to be relatively human-legible​
 
 # XML Basics
-Sample XML Code:
-<person>​
-  <name>Chuck</name>​
-  <phone type="intl">​
-     +1 734 303 4456​
-   </phone>​
-   <email hide="yes" />​
-</person>​
+# Sample XML Code:
+# <person>​
+#   <name>Chuck</name>​
+#   <phone type="intl">​
+#      +1 734 303 4456​
+#    </phone>​
+#    <email hide="yes" />​
+# </person>​
 
 # In the above XML code, following are the examples of XML elements
-Start Tag​         |     <person>​
-End Tag​           |     </person>​
-Text Content​      |     Chuck, +1 734 303 4456​
-Attribute​         |     type="intl" , hide="yes" (Key-Value pair on the opening tag of XML)
-Self Closing Tag  |     <email hide="yes" />​
+# Start Tag​         |     <person>​
+# End Tag​           |     </person>​
+# Text Content​      |     Chuck, +1 734 303 4456​
+# Attribute​         |     type="intl" , hide="yes" (Key-Value pair on the opening tag of XML)
+# Self Closing Tag  |     <email hide="yes" />​
 
 # XML Schema
 # Description of the legal format of an XML document​
@@ -111,3 +111,60 @@ Self Closing Tag  |     <email hide="yes" />​
 # http://en.wikipedia.org/wiki/ISO_8601​ 
 # 2002-05-30T09:30:10Z​
 # In the above, Z => Timezone - typically specified in UTC / GMT rather than local time zone​
+
+
+# Parsing XML with Python
+# import xml.etree.ElementTree as ET
+# data = '''
+# <person>
+#   <name>Chuck</name>
+#   <phone type="intl">
+#      +1 734 303 4456
+#    </phone>
+#    <email hide="yes"/>
+# </person>'''
+
+# tree = ET.fromstring(data)
+# print 'Name:',tree.find('name').text
+# print 'Attr:',tree.find('email').get('hide')
+
+
+# Parsing XML with Python - Second Example
+# import xml.etree.ElementTree as ET
+# input = '''
+# <stuff>
+#     <users>
+#         <user x="2">
+#             <id>001</id>
+#             <name>Chuck</name>
+#         </user>
+#         <user x="7">
+#             <id>009</id>
+#             <name>Brent</name>
+#             </user>
+#         </users>
+# </stuff>'''
+# stuff = ET.fromstring(input)
+# lst = stuff.findall('users/user')
+# print 'User count:', len(lst)
+# for item in lst:
+#     print 'Name', item.find('name').text
+#     print 'Id', item.find('id').text
+#     print 'Attribute', item.get("x")
+
+# Assignment of week 5 - Extracting Data from XML
+# import urllib.request, urllib.parse, urllib.error
+# import xml.etree.ElementTree as ET
+# # extract all the comment/count values from the url and get the sum of all of them
+# url = 'http://py4e-data.dr-chuck.net/comments_133481.xml'
+# # get the content of the url as a string
+# data = urllib.request.urlopen(url).read()
+# # transform the string content into a xml tree
+# tree = ET.fromstring(data)
+# # find all count elements
+# counts = tree.findall('comments/comment/count')
+# # extract the value of each count element and add it to the total
+# total = 0
+# for count in counts:
+#     total += int(count.text)
+# print('total: ', total)
